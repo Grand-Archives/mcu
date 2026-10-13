@@ -13,6 +13,7 @@ CLAUDE.md
 .github/workflows/pages.yml        # publishes the whole site/ folder on push to master
 site/
   index.html                       # pt-BR page (site root, keeps the published URL)
+  en/index.html                    # English page (https://grandarchives.github.io/mcu/en/)
   sitemap.xml                      # every language URL + xhtml:link hreflang alternates
   assets/icons/                    # favicon.ico, favicon.svg, apple-touch-icon.png (language-independent)
   assets/img/                      # language-independent images (none today)
@@ -21,14 +22,15 @@ site/
   i18n/languages.json              # [{ "code", "name", "path" }] used by the language selector
   i18n/pt-BR/ui.json               # UI strings (flat "section.key": "text"; may hold trusted inline HTML)
   i18n/pt-BR/data.js               # content (ES module: export default {...}); schema documented at the top of the file
-  <code>/index.html                # future language pages, e.g. site/en/index.html, data in site/i18n/<code>/
+  i18n/en/ui.json, i18n/en/data.js # English UI strings and content (same keys, ids and structure as pt-BR)
+  <code>/index.html                # further language pages follow the same pattern: site/<code>/index.html, data in site/i18n/<code>/
 ```
 
-How a page works: the language page is only `<head>` + `<div id="app"></div>` + a `<noscript>` message in the page language. `js/app.js` reads `<html lang>` (= folder name under `i18n/`), loads `ui.json` + `data.js` + `languages.json`, injects the body skeleton (elements carry `data-i18n` / `data-i18n-attr`), calls `I18N.apply()`, renders the language selector (it renders nothing while only one language exists) and then runs the logic.
+How a page works: the language page is only `<head>` + `<div id="app"></div>` + a `<noscript>` message in the page language. `js/app.js` reads `<html lang>` (= folder name under `i18n/`), loads `ui.json` + `data.js` + `languages.json`, injects the body skeleton (elements carry `data-i18n` / `data-i18n-attr`), calls `I18N.apply()`, renders the language selector (Português / English; it keeps the current hash and query when switching) and then runs the logic.
 
 Rules for `app.js`: no visible text in it (everything via `I18N.t` / `I18N.tn` or `data-i18n*`), no sentence assembled by concatenating translated fragments (use `{placeholders}` and plural keys `key.one` / `key.other`), locale-sensitive code uses `I18N.LANG`. The header block "i18n core" is shared by all GrandArchives sites and must stay byte-identical.
 
-## How to add a language (example: `en`)
+## How to add a language (reference: `en`, already done)
 
 1. Create `site/i18n/en/ui.json`: copy `pt-BR/ui.json`, translate every value (keep the keys, the `{placeholders}` and the plural pairs `.one` / `.other`; adapt the plural categories to the language). `lang.label` is the aria-label of the language selector.
 2. Create `site/i18n/en/data.js`: copy `pt-BR/data.js` and translate all texts. Do not change ids, numbers, years, type codes or URLs (see the schema comment at the top of the file). A translator must be able to deliver a complete `data.js` on its own.
@@ -77,5 +79,6 @@ Relative paths only (no leading `/`): the site lives at `/mcu/` in production an
 
 - pt-BR is the primary language and stays at the root URL (`site/index.html`); other languages live in `site/<code>/`.
 - The credits/sources block and the unofficial-fan-project/rights notice (footer) are mandatory in every language (`footer.notice`, `footer.sources` in `ui.json` and `sources` in `data.js`).
+- Ids (title/profile ids such as `ultimato` or `ciclope`, the `#historia` / `#explorar` section anchors) are language-independent keys that come from the Portuguese data; they are never translated, so every language shares the same ids, array lengths and URLs.
 - No build step, framework or dependency. Never open the site through `file://`: always test through a static server (e.g. `npx serve site` or `python -m http.server` inside `site/`).
 - Commits are written in English, Conventional Commits style (`feat:`, `fix:`, `refactor:`...), on branch `master`. Never add AI-attribution trailers (`Co-Authored-By`, `Claude-Session`, "Generated with...") to commits or PRs.
