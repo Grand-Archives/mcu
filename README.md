@@ -101,6 +101,8 @@ For titles from 2025 and 2026, the sources are the English Wikipedia entries, th
 
 This is an unofficial, free, non-profit fan project. It is not affiliated with or endorsed by Marvel, Disney, Sony or 20th Century Studios. Film, series and character names appear only to identify the works and belong to their owners. The site contains no images, logos or excerpts of the works.
 
-## Copyright
+## License
 
-Copyright © 2026 GrandArchives. Texts, organization and design of this guide.
+Released under the [MIT License](LICENSE). Copyright © 2026 GrandArchives.
+
+The license covers the code and the original texts, map, organization and design of this project. The works, names, characters, places and trademarks it mentions belong to their respective authors and rights holders and are not covered by it; see the [disclaimer](#disclaimer).
