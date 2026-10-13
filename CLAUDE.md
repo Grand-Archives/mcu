@@ -4,7 +4,7 @@
 
 ## What this is
 
-"MCU sem maratona": a static fan guide (unofficial) published on GitHub Pages at `https://grandarchives.github.io/mcu/`. Plain HTML/CSS/JS: no framework, no build step, no dependencies. The whole `site/` folder is what gets published (`.github/workflows/pages.yml` uploads `site/` as the Pages artifact).
+"MCU sem maratona": a static fan guide (unofficial) published on GitHub Pages at `https://grand-archives.github.io/mcu/`. Plain HTML/CSS/JS: no framework, no build step, no dependencies. The whole `site/` folder is what gets published (`.github/workflows/pages.yml` uploads `site/` as the Pages artifact).
 
 ## Folder structure
 
@@ -13,7 +13,7 @@ CLAUDE.md
 .github/workflows/pages.yml        # publishes the whole site/ folder on push to master
 site/
   index.html                       # pt-BR page (site root, keeps the published URL)
-  en/index.html                    # English page (https://grandarchives.github.io/mcu/en/)
+  en/index.html                    # English page (https://grand-archives.github.io/mcu/en/)
   sitemap.xml                      # every language URL + xhtml:link hreflang alternates
   assets/icons/                    # favicon.ico, favicon.svg, apple-touch-icon.png (language-independent)
   assets/img/                      # language-independent images (none today)
@@ -49,15 +49,15 @@ Rules for `app.js`: no visible text in it (everything via `I18N.t` / `I18N.tn` o
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>...</title>
 <meta name="description" content="...">
-<link rel="canonical" href="https://grandarchives.github.io/mcu/">            <!-- en: .../mcu/en/ -->
+<link rel="canonical" href="https://grand-archives.github.io/mcu/">            <!-- en: .../mcu/en/ -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GrandArchives">
 <meta property="og:locale" content="pt_BR">                                      <!-- en: en_US + og:locale:alternate pt_BR -->
 <meta property="og:title" content="...">
 <meta property="og:description" content="...">
-<meta property="og:url" content="https://grandarchives.github.io/mcu/">          <!-- same as canonical -->
-<link rel="alternate" hreflang="pt-BR" href="https://grandarchives.github.io/mcu/">
-<link rel="alternate" hreflang="x-default" href="https://grandarchives.github.io/mcu/">   <!-- x-default = Portuguese root; add one hreflang per language (absolute URLs) -->
+<meta property="og:url" content="https://grand-archives.github.io/mcu/">          <!-- same as canonical -->
+<link rel="alternate" hreflang="pt-BR" href="https://grand-archives.github.io/mcu/">
+<link rel="alternate" hreflang="x-default" href="https://grand-archives.github.io/mcu/">   <!-- x-default = Portuguese root; add one hreflang per language (absolute URLs) -->
 <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
 <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
